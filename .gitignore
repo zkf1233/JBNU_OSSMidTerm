@@ -1,2 +1,6 @@
 *.log
+<<<<<<< HEAD
 /__pycache__
+=======
+/__pycache
+>>>>>>> df3c16bd3893f63bdbf051c1164ae015ed1e6e14
