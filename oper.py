@@ -13,4 +13,6 @@ def multiply(x, y):
 
 # This function divides two numbers
 def divide (x, y):
+    if(y == 0):
+        return "er"
     return x / y

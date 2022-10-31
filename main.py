@@ -1,6 +1,16 @@
 # Program make a simple calculator
 
+from distutils.log import error
 import oper as op
+import os
+
+path = os.path.dirname(os.path.abspath(__file__))
+
+print(path)
+
+# calcLogf = 정상, errorLogf = 비정상
+calcLogf=open(path+"/calc.log", "a")
+errorLogf=open(path+"/error.log", "a")
 
 print("Select operation.")
 print("1.Add")
@@ -19,16 +29,28 @@ while True:
         num2 = float(input("Enter second number: "))
 
         if choice == '1':
-            print(num1, "+", num2, "=", op.add(num1, num2))
+            sum = op.add(num1, num2)
+            print(num1, "+", num2, "=", sum)
+            calcLogf.write("%d\n" % sum)
 
         elif choice == '2':
-            print(num1, "-", num2, "=", op.subtract(num1, num2))
+            sub = op.sub(num1, num2)
+            print(num1, "-", num2, "=", sub)
+            calcLogf.write("%d\n" % sub)
 
         elif choice == '3':
-            print(num1, "*", num2, "=", op.multiply(num1, num2))
+            mul = op.multiply(num1, num2)
+            print(num1, "*", num2, "=", mul)
+            calcLogf.write("%d\n" % mul)
             
         elif choice =='4':
-            print(num1, "/", num2, "=", op.divide(num1,num2))
+            div = op.divide(num1, num2)
+            if(div == "er"):
+                print("zde")
+                errorLogf.write("zde\n")
+            else:
+                print(num1, "/", num2, "=", op.divide(num1,num2))
+                calcLogf.write("%d\n" % div)
             
 
         # check if user wants another calculation
@@ -39,3 +61,6 @@ while True:
 
     else:
         print("Invalid Input")
+
+calcLogf.close()
+errorLogf.close()
