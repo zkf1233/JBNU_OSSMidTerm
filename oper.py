@@ -2,6 +2,13 @@ from decimal import *
 import sys
 import logging as log
 
+OPER_CODE = {
+    '1' : "+",
+    '2' : "-",
+    '3' : "*",
+    '4' : "/"
+}
+
 # Print operation result
 def operationString(num1, num2, res, operator):
     return "%s %s %s = %s" % (num1, operator, num2, res)
@@ -44,7 +51,7 @@ def divide (x, y):
         return float(value)
     except DivisionByZero:
         print("ZeroDivisionError")
-        return '2'
+        return '3'
     except Exception as e:
         print(e, file=sys.stderr)
         return '-1'

@@ -13,18 +13,23 @@ LOG_CODE = {
 
 class logManager:
     def __init__(self):
+        # print("Logmanager init")
         self.errLogFile = createLogFile("errlog")
         self.opLogFile = createLogFile("oplog")
 
     def errorLogWrite(self, code, opstr):
+        self.errLogFile = createLogFile("errlog")
         logWrite(code, opstr, self.errLogFile)
     def opLogWrite(self, code, opstr):
+        self.opLogFile = createLogFile("oplog")
         logWrite(code, opstr, self.opLogFile)
 
     def __del__(self):
+        # print("Logmanager close")
         self.errLogFile.close()
         self.opLogFile.close()
 
+# Create *.log file in folder *.py is running
 def createLogFile(filename):
     path = os.path.dirname(os.path.abspath(__file__))
 
@@ -38,7 +43,9 @@ def createLogFile(filename):
 
 def logWrite(code, opstr, filename):
     try:
+        # print("write.............")
         filename.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " <%s>" % LOG_CODE[code] + " : " + opstr + "\n")
+        filename.close()
     except:
         print("*.log doesn't exist | unknown")
         exit(1)
