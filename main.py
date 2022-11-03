@@ -4,6 +4,8 @@ import sys
 import oper as op
 import logging as log
 
+logFileManager = log.logManager()
+
 print("Select operation.")
 print("1.Add")
 print("2.Subtract")
@@ -21,18 +23,27 @@ while True:
             num2 = float(input("Enter second number: "))
         except Exception as e:
             print("Please enter a number :", e, file=sys.stderr)
+            logFileManager.errorLogWrite('1', e.args[0])
             continue
         
         # Operation
-        op.operationFunc(choice, str(num1), str(num2))
+        result = op.operationFunc(choice, str(num1), str(num2))
         
         # Check if user wants another calculation
         # Break the while loop if answer is no
         next_calculation = input("Let's do next calculation? (yes/no): ")
-        if next_calculation == "no":
+
+        while next_calculation.lower() != "yes" and next_calculation.lower() != "no":
+            print("Please answer yes or no")
+            next_calculation = input("Let's do next calculation? (yes/no): ")
+
+        if next_calculation.lower() == "no":
             recheck = input("Are you sure? (yes/no): ")
-            if (recheck == "yes"):
+            if (recheck.lower() == "yes"):
                 break
+        elif next_calculation.lower == "yes":
+            continue
 
     else:
+        logFileManager.errorLogWrite('2', )
         print("Invalid Input")
