@@ -32,12 +32,12 @@ while True:
             logFileManager.opLogWrite('0', op.operationString(num1, num2, result, op.OPER_CODE[choice]))
         elif(isinstance(result, str)):
             logFileManager.errorLogWrite(result, 
-                                        "Operation failed. <" +  op.operationString(num1, num2, "??", op.OPER_CODE[choice]) + ">" )
+                                        "Operation failed. <{0}>".format(op.operationString(num1, num2, "??", op.OPER_CODE[choice])))
         
         # Check if user wants another calculation
         # Break the while loop if answer is no
         next_calculation = input("Let's do next calculation? (yes/no): ")
-
+        
         while next_calculation.lower() != "yes":
             if next_calculation.lower() != "no":
                 print("Please answer yes or no")
@@ -54,5 +54,5 @@ while True:
                     print("Please answer yes or no")
 
     else:
-        logFileManager.errorLogWrite('2', "Input value <" + choice + ">")
+        logFileManager.errorLogWrite('2', f"Input value <{choice}>")
         print("Invalid Input")

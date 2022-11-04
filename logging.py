@@ -9,7 +9,7 @@ LOG_CODE = {
     '1' : "Operand Input Error",
     '2' : "Operator Selection Error",
     '3' : "Zero Division Error",
-    '4' : ""
+    '4' : "..."
 }
 
 class logManager:
@@ -42,11 +42,10 @@ def createLogFile(filename):
     else:
         return tempP
 
-# 
 def logWrite(code, opstr, filename):
     try:
         # print("write.............")
-        filename.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " <%s>" % LOG_CODE[code] + " : " + opstr + "\n")
+        filename.write("{0} <{1}> : {2}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S") , str(LOG_CODE[code]), opstr))
         filename.close()
     except:
         print("*.log doesn't exist | unknown")

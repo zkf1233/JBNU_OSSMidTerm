@@ -11,7 +11,7 @@ OPER_CODE = {
 
 # Print operation result
 def operationString(num1, num2, res, operator):
-    return "%s %s %s = %s" % (num1, operator, num2, res)
+    return str("%s %s %s = %s" % (num1, operator, num2, res))
 
 # This function adds two numbers
 def add(x, y):
@@ -21,7 +21,7 @@ def add(x, y):
         return float(value)
     except Exception as e:
         print(e, file=sys.stderr)
-        return '-1'
+        return str('-1')
 
 # This function subtracts two numbers
 def subtract(x, y):
@@ -31,7 +31,7 @@ def subtract(x, y):
         return float(value)
     except Exception as e:
         print(e, file=sys.stderr)
-        return '-1'
+        return str('-1')
 
 # This function multiplies two numbers
 def multiply(x, y):
@@ -41,7 +41,7 @@ def multiply(x, y):
         return float(value)
     except Exception as e:
         print(e, file=sys.stderr)
-        return '-1'
+        return str('-1')
 
 # This function divides two numbers
 def divide (x, y):
@@ -51,10 +51,10 @@ def divide (x, y):
         return float(value)
     except DivisionByZero:
         print("ZeroDivisionError")
-        return '3'
+        return str('3')
     except Exception as e:
         print(e, file=sys.stderr)
-        return '-1'
+        return str('-1')
 
 # Function dictionary
 OPERATION_DICT = {
