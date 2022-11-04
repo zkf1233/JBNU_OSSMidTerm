@@ -2,6 +2,7 @@ from datetime import datetime
 import os
 import sys
 
+# String for error or operation write log file
 LOG_CODE = {
     '-1' : "Unknown Error",
     '0' : "Success",
@@ -41,6 +42,7 @@ def createLogFile(filename):
     else:
         return tempP
 
+# 
 def logWrite(code, opstr, filename):
     try:
         # print("write.............")

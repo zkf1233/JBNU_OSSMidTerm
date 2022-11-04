@@ -28,9 +28,9 @@ while True:
         
         # Operation
         result = op.operationFunc(choice, str(num1), str(num2))
-        if(type(result) == float):
+        if(isinstance(result, float)):
             logFileManager.opLogWrite('0', op.operationString(num1, num2, result, op.OPER_CODE[choice]))
-        elif(type(result) == str):
+        elif(isinstance(result, str)):
             logFileManager.errorLogWrite(result, 
                                         "Operation failed. <" +  op.operationString(num1, num2, "??", op.OPER_CODE[choice]) + ">" )
         
